@@ -5,9 +5,29 @@
 #                                                 +:+   +:+  +:+    +:+ +:+ +:+:+ +:+    #
 #    By: adamfraga <adam.fraga@live.fr>         +#++:++#++: +#+    +:+ +#+  +:+  +#+     #
 #                                              +#+     +#+ +#+    +#+ +#+       +#+      #
-#    Created: 2021/09/28 13:34:18 by adam     #+#     #+# #+#    #+# #+#       #+#       #
-#    Updated: 2021/09/28 13:34:27 by adam    ###     ### #########  ###       ###i       #
+#    Created: 2021/09/28 13:47:13 by adam     #+#     #+# #+#    #+# #+#       #+#       #
+#    Updated: 2021/09/28 18:25:21 by adam    ###     ### #########  ###       ###i       #
 #                                                                                        #
 # ************************************************************************************** #
 
-print(10+3)
+cols = input("Entrer la largeur de votre rectangle")
+rows = input("Entrer la hauteur de votre rectangle")
+cols = int(cols)
+rows = int(rows)
+
+def print_rectangle(cols,rows):
+    for y in range(rows):
+        if y:
+            print(end="")
+        for x in range(cols):
+            if x == 0:
+                print("|", end="")
+            elif x == cols -1:
+                print("|")
+            elif y == 0 or y == rows - 1:
+                print("-", end ="")
+            else:
+                print(" ",end ="")
+
+print_rectangle( cols, rows)
+

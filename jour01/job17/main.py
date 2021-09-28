@@ -5,9 +5,16 @@
 #                                                 +:+   +:+  +:+    +:+ +:+ +:+:+ +:+    #
 #    By: adamfraga <adam.fraga@live.fr>         +#++:++#++: +#+    +:+ +#+  +:+  +#+     #
 #                                              +#+     +#+ +#+    +#+ +#+       +#+      #
-#    Created: 2021/09/28 13:34:18 by adam     #+#     #+# #+#    #+# #+#       #+#       #
-#    Updated: 2021/09/28 13:34:27 by adam    ###     ### #########  ###       ###i       #
+#    Created: 2021/09/28 13:33:13 by adam     #+#     #+# #+#    #+# #+#       #+#       #
+#    Updated: 2021/09/28 13:35:37 by adam    ###     ### #########  ###       ###i       #
 #                                                                                        #
 # ************************************************************************************** #
 
-print(10+3)
+myList = []
+
+for i in range(5):
+    myInteger = input("Entrez un nombre entier \n")
+    myList += myInteger
+
+myList.sort()
+print(myList)
