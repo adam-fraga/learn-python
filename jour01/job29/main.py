@@ -5,29 +5,20 @@
 #                                                 +:+   +:+  +:+    +:+ +:+ +:+:+ +:+    #
 #    By: adamfraga <adam.fraga@live.fr>         +#++:++#++: +#+    +:+ +#+  +:+  +#+     #
 #                                              +#+     +#+ +#+    +#+ +#+       +#+      #
-#    Created: 2021/09/28 13:47:13 by adam     #+#     #+# #+#    #+# #+#       #+#       #
-#    Updated: 2021/09/28 18:27:13 by adam    ###     ### #########  ###       ###i       #
+#    Created: 2021/09/28 18:34:12 by adam     #+#     #+# #+#    #+# #+#       #+#       #
+#    Updated: 2021/09/28 21:48:26 by adam    ###     ### #########  ###       ###i       #
 #                                                                                        #
 # ************************************************************************************** #
 
-cols = input("Entrer la largeur de votre rectangle")
-rows = input("Entrer la hauteur de votre rectangle")
-cols = int(cols)
-rows = int(rows)
+# Écrire un programme qui affiche un triangle avec des ‘_’, des ‘\’ et des ‘/’ en
+# fonction des paramètres d’entrées, (height), par exemple :
+# draw_triangle(5)
 
-def print_rectangle(cols,rows):
-    for y in range(rows):
-        if y:
-            print(end="")
-        for x in range(cols):
-            if x == 0:
-                print("|", end="")
-            elif x == cols -1:
-                print("|")
-            elif y == 0 or y == rows - 1:
-                print("-", end ="")
-            else:
-                print(" ",end ="")
+# def draw_triangle(rows):
+            
 
-print_rectangle( cols, rows)
+
+# rows = input("Entrez la taille de votre triangle")
+
+# draw_triangle(rows)
 
