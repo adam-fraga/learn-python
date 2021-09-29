@@ -6,7 +6,7 @@
 #    By: adamfraga <adam.fraga@live.fr>         +#++:++#++: +#+    +:+ +#+  +:+  +#+     #
 #                                              +#+     +#+ +#+    +#+ +#+       +#+      #
 #    Created: 2021/09/29 10:34:33 by adam     #+#     #+# #+#    #+# #+#       #+#       #
-#    Updated: 2021/09/29 13:37:38 by adam    ###     ### #########  ###       ###i       #
+#    Updated: 2021/09/29 17:54:28 by adam    ###     ### #########  ###       ###i       #
 #                                                                                        #
 # ************************************************************************************** #
 
@@ -60,13 +60,13 @@ class Personne:
     firstname = property(_getfirstname, _setfirstname)
 
 # Instancie des objet personne
-Adam = Personne("Adam","Fraga")
-Chuck = Personne("Chuck","Norris")
-Marie = Personne("Marie","Lou")
+# Adam = Personne("Adam","Fraga")
+# Chuck = Personne("Chuck","Norris")
+# Marie = Personne("Marie","Lou")
 
-firstname = Adam._getfirstname()
-name = Adam._getname()
+# firstname = Adam._getfirstname()
+# name = Adam._getname()
 
-Adam.SePresenter()
-print("Mon prénom est {}".format(firstname))
-print("Mon nom est {}".format(name))
+# Adam.SePresenter()
+# print("Mon prénom est {}".format(firstname))
+# print("Mon nom est {}".format(name))
