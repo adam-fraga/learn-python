@@ -55,7 +55,7 @@ class Livre:
 
 class Auteur (Personne):
       # Appel constructeur de la classe mère (Personne)
-    def __init__(oeuvre, Book):
+    def __init__(self, oeuvre, Book):
         # La methode super permet de faire référence à la class parente et
         # permet ainsi de récuperer ses Attributs et methodes
         super().__init__(name, firstname)
