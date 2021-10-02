@@ -1,5 +1,4 @@
 import numpy as np
-from numpy.core.records import array
 
 
 class Game(object):
@@ -8,10 +7,8 @@ class Game(object):
     # Constructeur
     def __init__(self, size):
         self._size = size
-        self._board = np.empty((self._size, self._size))
-        # Syntaxe de compréhension de listes voir mes notes (code doc Python)
-        self._axe_X = [x for x in range(self._size)]
-        self._axe_Y = [y for y in range(self._size)]
+        # initialise un tableau de 0 a size * size dimension
+        self._board = np.zeros(shape=(size, size))
         self._dames = self._size
 
     # Getter & setters
@@ -55,44 +52,6 @@ class Game(object):
         else:
             print("Le plateau de jeu doit être un tableau")
 
-    # Récupère l'axe des abscisses (sous forme de liste)
-    def _getaxe_X(self):
-        try:
-            return self._axe_X
-        except Exception as e:
-            print("Impossible de récupéré l'axe X \n")
-            raise e
-
-    # initialise la liste des abscisses
-    def _setaxe_X(self, axe_X):
-        if isinstance(axe_X, list):
-            try:
-                self._axe_X = axe_X
-            except Exception as e:
-                print("Impossible d'initialiser l'axe X \n")
-                raise e
-        else:
-            ("L'axe X doit être une liste de valeur")
-
-    # Récupère l'axe des ordinnées (sous forme de liste)
-    def _getaxe_Y(self):
-        try:
-            return self._axe_Y
-        except Exception as e:
-            print("Impossible de récupéré l'axe Y \n")
-            raise e
-
-    # initialise la liste des ordonnées
-    def _setaxe_Y(self, axe_Y):
-        if isinstance(axe_Y, list):
-            try:
-                self._axe_Y = axe_Y
-            except Exception as e:
-                print("Impossible d'initialiser l'axe Y \n")
-                raise e
-        else:
-            print("L'axe des Y doit être une liste")
-
     # Récupère le nombre de dame = a la taille de l'input user
     # Les dames sont une valeur constante egal à l'input user
     # La constante n'existant pas en python pas de setter
@@ -106,18 +65,23 @@ class Game(object):
     # Respect de l'ordre des parametres Voir Notes code doc Python property
     size = property(_getsize, _setsize)
     board = property(_getboard, _setboard)
-    axe_X = property(_getaxe_X, _setaxe_X)
-    axe_Y = property(_getaxe_Y, _setaxe_Y)
     dames = property(_getdames)
 
     # Essaie de mouvement attaque allée et retour sur plateau par récursion
-    def dame_attack(self, i):
+    # La dame attaque à l'index x + 1 jusqu'a fin de recursion et reviens avec x-1
+    def dame_move(self, i):
+        plateau = self._getboard()
+        plateau[0][0] = 6
         if i == 0:
             return True
         else:
-            print(i)
-            self.dame_attack(i - 1)
-            print(i)
+            # Affiche l'indice allant de la fin de la taille a son début?
+            # -1 car tab demarre à 0
+            plateau[1][i - 1] = 2
+            plateau[i - 1][0] = 2
+            self.dame_move(i - 1)
+            plateau[0][i - 1] = 3
+            plateau[i - 1][0] = 3
 
 
 size = input("Entrez la taille du jeu\n")
@@ -131,6 +95,11 @@ if size:
     print(f"Nombre de dames: {Game1._getdames()} représenté par des X \n")
     print("Les cases vides sont représenté par la lettre O\n")
     # Avant de placer dame programmer ses attaques sur plateau en vu de définir les cases disponible?
+
+    # Print Tableau avant chemion reine
+    print(f"AVANT Dame Attaque\n {Game1._getboard()}")
+    Game1.dame_move(Game1._getsize())
+    print(f"APRES Dame Attaque\n {Game1._getboard()}")
 
 
 else:
