@@ -1,3 +1,4 @@
+import random as rn
 import numpy as np
 
 
@@ -67,21 +68,25 @@ class Game(object):
     board = property(_getboard, _setboard)
     dames = property(_getdames)
 
+    # Définit aléatoirement la position de la première dame sur le plateau et
+    # Retourne sa position sous la forme d'un tuple (x,y)
+    def __init_queen__(self):
+        # -1 (index tableau demarre à 0) Pour placer la première dame
+        posX = rn.randint(0, self._size - 1)
+        posY = rn.randint(0, self._size - 1)
+        self._getboard()[posX][posY] = 7
+        return [posX, posY]
+
     # Essaie de mouvement attaque allée et retour sur plateau par récursion
     # La dame attaque à l'index x + 1 jusqu'a fin de recursion et reviens avec x-1
-    def dame_move(self, i):
+    def __check_path__(self, i, row, col, pos_first_queen):
         plateau = self._getboard()
-        plateau[0][0] = 6
         if i == 0:
             return True
         else:
             # Affiche l'indice allant de la fin de la taille a son début?
             # -1 car tab demarre à 0
-            plateau[1][i - 1] = 2
-            plateau[i - 1][0] = 2
-            self.dame_move(i - 1)
-            plateau[0][i - 1] = 3
-            plateau[i - 1][0] = 3
+            self.__check_path__(i - 1, 0, 0, 0)
 
 
 size = input("Entrez la taille du jeu\n")
@@ -98,10 +103,10 @@ if size:
 
     # Print Tableau avant chemion reine
     print(f"AVANT Dame Attaque\n {Game1._getboard()}")
-    Game1.dame_move(Game1._getsize())
+    # Créer un nombre de dame équivalent à la taille du plateau
+    print(Game1.__init_queen__())
+    Game1.__check_path__(Game1._getsize(), 0, 0, 0)
     print(f"APRES Dame Attaque\n {Game1._getboard()}")
-
-
 else:
     print(
         "Vous devez entrer une valeur entière qui représentera la taille du plateau de jeu"
